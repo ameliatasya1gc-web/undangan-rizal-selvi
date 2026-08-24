@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Prewedding - Rizal & Selvi</title>
-    <!-- Import Font Alex Brush & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
@@ -65,16 +64,13 @@
             text-transform: uppercase;
         }
 
-        /* FONT NAMA (ALEX BRUSH - PERSIS GAMBAR ACUAN) */
-        .cover-names {
-            font-family: 'Alex Brush', cursive !important;
-            font-size: 4.2rem;
-            color: #ffffff;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-            margin: 5px 0 10px 0;
-            line-height: 1.1;
+        /* STYLE GAMBAR NAMA PASANGAN */
+        .name-image {
+            width: 280px;
+            max-width: 80%;
+            height: auto;
+            margin: 15px 0;
+            filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.6));
         }
 
         .cover-date {
@@ -187,7 +183,8 @@
     <div class="cover-screen" id="coverScreen">
         <div>
             <p class="cover-title">The Wedding Of</p>
-            <h1 class="cover-names">Rizal & Selvi</h1>
+            <!-- TAG NAMA SUDAH DIGANTI GAMBAR PNG -->
+            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image">
             <p class="cover-date">Jumat, 11 September 2026</p>
         </div>
         <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
@@ -200,7 +197,7 @@
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <p style="color: var(--accent-gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 5px;">WEDDING INVITATION</p>
-            <h2 style="font-family: 'Alex Brush', cursive; font-size: 3.5rem; margin-bottom: 5px; font-weight: normal; color: #fff;">Rizal & Selvi</h2>
+            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image" style="width: 220px;">
             <p style="font-size: 0.85rem; letter-spacing: 1px; opacity: 0.9;">Mempelai Pria & Mempelai Wanita</p>
 
             <div class="event-info" data-aos="fade-up">
