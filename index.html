@@ -33,7 +33,7 @@
             overflow-x: hidden;
         }
 
-        /* COVER LAYAR UTAMA */
+        /* COVER LAYAR UTAMA - PRESISI DI TENGAH */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -43,9 +43,9 @@
             background: linear-gradient(rgba(11, 26, 48, 0.4), rgba(11, 26, 48, 0.85)), url('foto-prewedding.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center; /* Memaksa konten kumpul tepat di tengah vertikal */
             align-items: center;
-            padding: 50px 20px 60px 20px;
+            padding: 20px;
             z-index: 999;
             transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
             text-align: center;
@@ -57,24 +57,31 @@
             pointer-events: none;
         }
 
+        /* WRAPPER TEKS ATAS AGAR JARAK TERKONTROL */
+        .cover-header-group {
+            margin-bottom: 80px; /* Jarak antara grup teks atas dengan tombol bawah */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .cover-title {
             font-size: 0.85rem;
             letter-spacing: 4px;
             color: var(--accent-gold);
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
         }
 
-        /* GAMBAR NAMA DI-FILTER AGAR PUTIH CERAH DAN PROPORSIONAL */
+        /* GAMBAR NAMA DI-FILTER AGAR PUTIH CERAH DAN PAS */
         .name-image-cover {
-            width: 380px !important;
-            max-width: 90% !important;
+            width: 320px !important;
+            max-width: 85% !important;
             height: auto;
-            margin: 5px 0 10px 0;
+            margin: 10px 0 20px 0;
             filter: brightness(0) invert(1) drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
             display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .cover-date {
@@ -114,7 +121,7 @@
         }
 
         .name-image-main {
-            width: 260px !important;
+            width: 240px !important;
             max-width: 80% !important;
             height: auto;
             margin: 10px auto;
@@ -194,7 +201,7 @@
 
     <!-- Halaman Cover Utama -->
     <div class="cover-screen" id="coverScreen">
-        <div style="width: 100%;">
+        <div class="cover-header-group">
             <p class="cover-title">The Wedding Of</p>
             <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
             <p class="cover-date">Jumat, 11 September 2026</p>
