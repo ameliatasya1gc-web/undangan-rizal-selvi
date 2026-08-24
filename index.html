@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Prewedding - Rizal & Selvi</title>
-    <!-- Import Font Sacramento & Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <!-- Import Font WindSong & Birthstone untuk gaya Signature persis contoh -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Montserrat:wght@300;400;600&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
@@ -57,41 +59,44 @@
         }
 
         .cover-title {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
             color: var(--accent-gold);
             text-transform: uppercase;
         }
 
-        /* FONT NAMA SESUAI GAMBAR */
+        /* FONT NAMA (GAYA SIGNATURE/TULISAN TANGAN PERSIS CONTOH) */
         .cover-names {
-            font-family: 'Sacramento', cursive;
-            font-size: 4rem;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            margin: 5px 0;
-            font-weight: normal;
+            font-family: 'Birthstone', 'WindSong', cursive !important;
+            font-size: 4.5rem;
+            color: #ffffff;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            margin: 0;
+            line-height: 1.1;
         }
 
         .cover-date {
             font-size: 0.9rem;
             letter-spacing: 1px;
+            font-weight: 300;
         }
 
         .btn-open {
-            border: 2px solid var(--accent-gold);
-            background: rgba(19, 39, 67, 0.8);
+            border: 1.5px solid var(--accent-gold);
+            background: rgba(11, 26, 48, 0.7);
             color: #fff;
-            padding: 12px 30px;
-            font-size: 1rem;
+            padding: 12px 32px;
+            font-size: 0.95rem;
             letter-spacing: 1px;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             transition: 0.3s;
         }
 
-        /* HALAMAN KEDUA (FOKUS TEKS) */
+        /* HALAMAN KEDUA (TEKS FOKUS) */
         .main-content {
             width: 100%;
             max-width: 420px;
@@ -101,7 +106,7 @@
         .container {
             width: 100%;
             background: var(--card-bg);
-            border: 2px solid var(--accent-gold);
+            border: 1px solid var(--accent-gold);
             border-radius: 16px;
             padding: 40px 20px;
             text-align: center;
@@ -174,12 +179,11 @@
 </head>
 <body>
 
-    <!-- Audio Player -->
     <audio id="bgMusic" loop>
         <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Halaman 1: Sampul Utama (Font Nama Sesuai Gambar Contoh) -->
+    <!-- Halaman Cover Utama -->
     <div class="cover-screen" id="coverScreen">
         <div>
             <p class="cover-title">The Wedding Of</p>
@@ -192,14 +196,13 @@
     <!-- Tombol Musik -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- Halaman 2: Hanya Teks Keterangan Acara -->
+    <!-- Halaman Detail Acara -->
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <p style="color: var(--accent-gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 5px;">WEDDING INVITATION</p>
-            <h2 style="font-family: 'Sacramento', cursive; font-size: 3.5rem; margin-bottom: 5px; font-weight: normal;">Rizal & Selvi</h2>
+            <h2 style="font-family: 'Birthstone', cursive; font-size: 4rem; margin-bottom: 5px; font-weight: normal; color: #fff;">Rizal & Selvi</h2>
             <p style="font-size: 0.85rem; letter-spacing: 1px; opacity: 0.9;">Mempelai Pria & Mempelai Wanita</p>
 
-            <!-- Detail Acara -->
             <div class="event-info" data-aos="fade-up">
                 <h3>AKAD NIKAH & RESEPSI</h3>
                 <p><strong>Hari / Tanggal:</strong><br>Jumat, 11 September 2026</p>
@@ -217,7 +220,6 @@
         </div>
     </div>
 
-    <!-- Script Kontrol -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
@@ -240,7 +242,6 @@
             isPlaying = !isPlaying;
         }
 
-        // Timer Hitung Mundur
         const targetDate = new Date("September 11, 2026 08:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
