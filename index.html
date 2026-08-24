@@ -33,7 +33,7 @@
             overflow-x: hidden;
         }
 
-        /* COVER LAYAR UTAMA - PRESISI DI TENGAH */
+        /* COVER LAYAR UTAMA */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -43,9 +43,9 @@
             background: linear-gradient(rgba(11, 26, 48, 0.4), rgba(11, 26, 48, 0.85)), url('foto-prewedding.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Memaksa konten kumpul tepat di tengah vertikal */
+            justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 60px 20px;
             z-index: 999;
             transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
             text-align: center;
@@ -57,31 +57,20 @@
             pointer-events: none;
         }
 
-        /* WRAPPER TEKS ATAS AGAR JARAK TERKONTROL */
-        .cover-header-group {
-            margin-bottom: 80px; /* Jarak antara grup teks atas dengan tombol bawah */
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .cover-title {
             font-size: 0.85rem;
             letter-spacing: 4px;
             color: var(--accent-gold);
             text-transform: uppercase;
-            margin-bottom: 15px;
         }
 
-        /* GAMBAR NAMA DI-FILTER AGAR PUTIH CERAH DAN PAS */
-        .name-image-cover {
-            width: 320px !important;
-            max-width: 85% !important;
+        /* STYLE GAMBAR NAMA PASANGAN */
+        .name-image {
+            width: 280px;
+            max-width: 80%;
             height: auto;
-            margin: 10px 0 20px 0;
-            filter: brightness(0) invert(1) drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
-            display: block;
+            margin: 15px 0;
+            filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.6));
         }
 
         .cover-date {
@@ -118,15 +107,6 @@
             padding: 40px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .name-image-main {
-            width: 240px !important;
-            max-width: 80% !important;
-            height: auto;
-            margin: 10px auto;
-            filter: brightness(0) invert(1) drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.5));
-            display: block;
         }
 
         .event-info {
@@ -201,9 +181,10 @@
 
     <!-- Halaman Cover Utama -->
     <div class="cover-screen" id="coverScreen">
-        <div class="cover-header-group">
+        <div>
             <p class="cover-title">The Wedding Of</p>
-            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
+            <!-- TAG NAMA SUDAH DIGANTI GAMBAR PNG -->
+            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image">
             <p class="cover-date">Jumat, 11 September 2026</p>
         </div>
         <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
@@ -216,7 +197,7 @@
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <p style="color: var(--accent-gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 5px;">WEDDING INVITATION</p>
-            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-main">
+            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image" style="width: 220px;">
             <p style="font-size: 0.85rem; letter-spacing: 1px; opacity: 0.9;">Mempelai Pria & Mempelai Wanita</p>
 
             <div class="event-info" data-aos="fade-up">
