@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* BANNER COVER UTAMA */
+        /* COVER LAYAR UTAMA */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -88,7 +88,7 @@
             transition: 0.3s;
         }
 
-        /* KONTEN HALAMAN KEDUA */
+        /* HALAMAN KEDUA (FOKUS TEKS) */
         .main-content {
             width: 100%;
             max-width: 420px;
@@ -100,50 +100,35 @@
             background: var(--card-bg);
             border: 2px solid var(--accent-gold);
             border-radius: 16px;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .photo-frame {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto 25px;
-            border: 3px solid var(--accent-gold);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
         }
 
         .event-info {
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 20px 0;
-            margin: 25px 0;
+            padding: 25px 0;
+            margin: 30px 0;
         }
 
         .event-info h3 {
             color: var(--accent-gold);
             font-size: 1.1rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
         }
 
         .event-info p {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 5px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 8px;
         }
 
         .countdown {
             display: flex;
             justify-content: space-around;
-            margin-bottom: 25px;
+            margin-top: 20px;
         }
 
         .time-box {
@@ -191,7 +176,7 @@
         <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Halaman 1: Cover Layar Penuh -->
+    <!-- Halaman 1: Sampul Layar Penuh (Foto Tetap Ada di Sini) -->
     <div class="cover-screen" id="coverScreen">
         <div>
             <p class="cover-title">The Wedding Of</p>
@@ -204,22 +189,19 @@
     <!-- Tombol Musik -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- Halaman 2: Isi Acara Undangan -->
+    <!-- Halaman 2: Hanya Teks Keterangan Acara -->
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <p style="color: var(--accent-gold); letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 5px;">WEDDING INVITATION</p>
-            <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; margin-bottom: 20px;">Rizal & Selvi</h2>
+            <p style="color: var(--accent-gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 5px;">WEDDING INVITATION</p>
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 10px;">Rizal & Selvi</h2>
+            <p style="font-size: 0.85rem; letter-spacing: 1px; opacity: 0.9;">Mempelai Pria & Mempelai Wanita</p>
 
-            <div class="photo-frame" data-aos="zoom-in">
-                <img src="foto-prewedding.jpg" alt="Foto Prewedding">
-            </div>
-
-            <!-- Keterangan Acara -->
+            <!-- Detail Acara -->
             <div class="event-info" data-aos="fade-up">
                 <h3>AKAD NIKAH & RESEPSI</h3>
-                <p><strong>Hari / Tanggal:</strong> Jumat, 11 September 2026</p>
-                <p><strong>Waktu:</strong> 08.00 WIB - Selesai</p>
-                <p><strong>Lokasi:</strong> Kediaman Mempelai Wanita</p>
+                <p><strong>Hari / Tanggal:</strong><br>Jumat, 11 September 2026</p>
+                <p><strong>Waktu:</strong><br>08.00 WIB - Selesai</p>
+                <p><strong>Lokasi:</strong><br>Kediaman Mempelai Wanita</p>
             </div>
 
             <p style="font-size: 0.8rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 15px;">MENUJU HARI BAHAGIA</p>
@@ -241,10 +223,7 @@
         let isPlaying = false;
 
         function openInvitation() {
-            // Animasi Geser Sampul Ke Atas
             document.getElementById('coverScreen').classList.add('open');
-            
-            // Otomatis Putar Musik
             music.play();
             isPlaying = true;
         }
@@ -255,7 +234,7 @@
             } else {
                 music.play();
             }
-                isPlaying = !isPlaying;
+            isPlaying = !isPlaying;
         }
 
         // Timer Hitung Mundur
