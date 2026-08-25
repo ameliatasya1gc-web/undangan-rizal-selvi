@@ -255,7 +255,7 @@
             margin-bottom: 10px;
         }
 
-        /* COUNTDOWN TIMING STYLES (DIBUAT SLUG/PERMANEN TANPA ANIMASI SCROLL) */
+        /* COUNTDOWN TIMING STYLES */
         .countdown {
             display: flex;
             justify-content: space-around;
@@ -280,6 +280,73 @@
         .time-box label {
             font-size: 0.6rem;
             letter-spacing: 1px;
+        }
+
+        /* STYLING LOVE GIFT & UCAPAN PENUTUP */
+        .gift-section {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gift-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .gift-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .bank-card {
+            background: rgba(11, 26, 48, 0.7);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 18px 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .bank-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .account-number {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin: 8px 0 4px 0;
+        }
+
+        .account-name {
+            font-size: 0.8rem;
+            opacity: 0.85;
+        }
+
+        .closing-text {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin: 35px 0 20px 0;
+            opacity: 0.95;
+        }
+
+        .closing-signature {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -341,13 +408,33 @@
                 <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
             </div>
 
-            <!-- BAGIAN COUNTDOWN PERMANEN (TANPA ANIMASI HILANG-TIMBUL) -->
+            <!-- COUNTDOWN -->
             <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
             <div class="countdown">
                 <div class="time-box"><span id="days">00</span><label>HARI</label></div>
                 <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
                 <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
+            </div>
+
+            <!-- BAGIAN LOVE GIFT -->
+            <div class="gift-section" data-aos="fade-up">
+                <h3 class="gift-title">Love Gift</h3>
+                <p class="gift-text">
+                    Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
+                </p>
+                <div class="bank-card">
+                    <div class="bank-name">BCA</div>
+                    <div class="account-number">3571153368</div>
+                    <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
+                </div>
+            </div>
+
+            <!-- TEKS PENUTUP -->
+            <div class="closing-text" data-aos="fade-up">
+                <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
+                <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Kami yang berbahagia,</p>
+                <div class="closing-signature">Rizal & Selvi</div>
             </div>
 
         </div>
@@ -357,7 +444,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: true // Animasi hanya berjalan sekali agar tidak hilang-timbul
+            once: true
         });
 
         const bgMusic = document.getElementById('bgMusic');
@@ -405,7 +492,6 @@
             }
         }
 
-        // FUNGSI HITUNG MUNDUR (COUNTDOWN)
         function updateCountdown() {
             const targetDate = new Date("September 12, 2026 08:00:00").getTime();
             const now = new Date().getTime();
@@ -419,7 +505,6 @@
             }
         }
 
-        // Jalankan langsung saat pertama dimuat
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
