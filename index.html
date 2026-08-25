@@ -36,9 +36,7 @@
             overflow-x: hidden;
         }
 
-        /* -------------------------------------------------- */
-        /* COVER SCREEN (LAYAR UTAMA SEBELUM DIBUKA)           */
-        /* -------------------------------------------------- */
+        /* COVER SCREEN */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -106,9 +104,7 @@
             border-color: var(--accent-gold);
         }
 
-        /* -------------------------------------------------- */
-        /* TOMBOL MUSIK FLOATING                              */
-        /* -------------------------------------------------- */
+        /* TOMBOL MUSIK FLOATING */
         .music-control {
             position: fixed;
             bottom: 25px;
@@ -138,9 +134,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* -------------------------------------------------- */
-        /* MAIN CONTENT (SLIDE KEDUA / DETAIL UNDANGAN)       */
-        /* -------------------------------------------------- */
+        /* MAIN CONTENT */
         .main-content {
             width: 100%;
             max-width: 450px;
@@ -261,6 +255,7 @@
             margin-bottom: 10px;
         }
 
+        /* COUNTDOWN TIMING STYLES (DIBUAT SLUG/PERMANEN TANPA ANIMASI SCROLL) */
         .countdown {
             display: flex;
             justify-content: space-around;
@@ -307,11 +302,10 @@
     <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- HALAMAN DETAIL ACARA (SLIDE KEDUA) -->
+    <!-- HALAMAN DETAIL ACARA -->
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             
-            <!-- Inisial & Ayat Pembuka -->
             <div class="initial-badge" data-aos="fade-down">R & S</div>
             
             <p class="quote-box" data-aos="fade-up">
@@ -321,14 +315,12 @@
 
             <div class="section-divider"></div>
 
-            <!-- Header Slide Kedua -->
             <h2 class="getting-married-title" data-aos="fade-up">We Are Getting Married</h2>
             
             <p class="wedding-opening-text" data-aos="fade-up">
                 Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
             </p>
 
-            <!-- Profil Mempelai Pria -->
             <div class="couple-group" data-aos="fade-up">
                 <div class="couple-name-nickname">Rizal</div>
                 <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
@@ -337,23 +329,21 @@
 
             <div class="ampersand" data-aos="zoom-in">&</div>
 
-            <!-- Profil Mempelai Wanita -->
             <div class="couple-group" data-aos="fade-up">
                 <div class="couple-name-nickname">Selvi</div>
                 <div class="couple-fullname">Nunik Selviana</div>
                 <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
             </div>
 
-            <!-- Informasi Acara -->
             <div class="event-info" data-aos="fade-up">
                 <h3>Acara Tasyakuran Pernikahan</h3>
                 <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
                 <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
             </div>
 
-            <!-- Countdown Timer -->
-            <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;" data-aos="fade-up">MENUJU HARI BAHAGIA</p>
-            <div class="countdown" data-aos="fade-up">
+            <!-- BAGIAN COUNTDOWN PERMANEN (TANPA ANIMASI HILANG-TIMBUL) -->
+            <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
+            <div class="countdown">
                 <div class="time-box"><span id="days">00</span><label>HARI</label></div>
                 <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
                 <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
@@ -366,7 +356,9 @@
     <!-- JAVASCRIPT LOGIC -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            once: true // Animasi hanya berjalan sekali agar tidak hilang-timbul
+        });
 
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.querySelector('.music-control');
@@ -413,19 +405,23 @@
             }
         }
 
-        // Countdown Disesuaikan ke Tanggal Acara Tasyakuran (12 September 2026)
-        const targetDate = new Date("September 12, 2026 08:00:00").getTime();
-        setInterval(function() {
+        // FUNGSI HITUNG MUNDUR (COUNTDOWN)
+        function updateCountdown() {
+            const targetDate = new Date("September 12, 2026 08:00:00").getTime();
             const now = new Date().getTime();
             const diff = targetDate - now;
 
             if (diff > 0) {
-                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("days").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
             }
-        }, 1000);
+        }
+
+        // Jalankan langsung saat pertama dimuat
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
