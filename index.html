@@ -8,7 +8,7 @@
     <!-- Fonts & AOS Animation Library -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
@@ -45,12 +45,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(11, 26, 48, 0.3), rgba(11, 26, 48, 0.85)), url('foto-prewedding.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(11, 26, 48, 0.45), rgba(11, 26, 48, 0.9)), url('foto-prewedding.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 20px 50px 20px;
+            padding: 30px 20px 40px 20px;
             z-index: 999;
             transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
             text-align: center;
@@ -62,7 +62,6 @@
             pointer-events: none;
         }
 
-        /* GROUP TEKS ATAS */
         .cover-header-group {
             margin-top: 0;
             width: 100%;
@@ -80,7 +79,6 @@
             opacity: 0.9;
         }
 
-        /* GAMBAR NAMA & TANGGAL PASANGAN DI COVER */
         .name-image-cover {
             width: 300px !important;
             max-width: 80% !important;
@@ -90,10 +88,9 @@
             display: block;
         }
 
-        /* TOMBOL BUKA UNDANGAN */
         .btn-open {
             border: 1.5px solid var(--accent-gold);
-            background: rgba(11, 26, 48, 0.7);
+            background: rgba(11, 26, 48, 0.75);
             color: #fff;
             padding: 12px 36px;
             font-size: 0.9rem;
@@ -142,12 +139,12 @@
         }
 
         /* -------------------------------------------------- */
-        /* MAIN CONTENT (HALAMAN KEDUA / DETAIL UNDANGAN)     */
+        /* MAIN CONTENT (SLIDE KEDUA / DETAIL UNDANGAN)       */
         /* -------------------------------------------------- */
         .main-content {
             width: 100%;
-            max-width: 420px;
-            padding: 20px;
+            max-width: 450px;
+            padding: 25px 15px;
         }
 
         .container {
@@ -155,63 +152,138 @@
             background: var(--card-bg);
             border: 1px solid var(--accent-gold);
             border-radius: 16px;
-            padding: 40px 20px;
+            padding: 35px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .name-image-main {
-            width: 240px !important;
-            max-width: 80% !important;
-            height: auto;
-            margin: 10px auto;
-            filter: brightness(0) invert(1) drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.5));
+        .initial-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .quote-box {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin: 15px 0 25px 0;
+            padding: 0 5px;
+            font-style: italic;
+        }
+
+        .quote-surah {
             display: block;
+            margin-top: 8px;
+            font-weight: 600;
+            font-style: normal;
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+        }
+
+        .section-divider {
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+            margin: 25px auto;
+        }
+
+        .getting-married-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .wedding-opening-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .couple-group {
+            margin: 20px 0;
+        }
+
+        .couple-name-nickname {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .couple-fullname {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .parents-info {
+            font-size: 0.78rem;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        .ampersand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin: 15px 0;
+            font-weight: 700;
         }
 
         .event-info {
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 25px 0;
-            margin: 30px 0;
+            padding: 20px 10px;
+            margin: 30px 0 20px 0;
         }
 
         .event-info h3 {
             color: var(--accent-gold);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            margin-bottom: 12px;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .event-info p {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
         }
 
         .countdown {
             display: flex;
             justify-content: space-around;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .time-box {
             border: 1px solid var(--accent-gold);
             border-radius: 8px;
-            padding: 10px 8px;
-            min-width: 65px;
+            padding: 8px 6px;
+            min-width: 60px;
             background: rgba(11, 26, 48, 0.6);
         }
 
         .time-box span {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--accent-gold);
         }
 
         .time-box label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 1px;
         }
     </style>
@@ -235,27 +307,59 @@
     <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- HALAMAN DETAIL ACARA -->
+    <!-- HALAMAN DETAIL ACARA (SLIDE KEDUA) -->
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <p style="color: var(--accent-gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 5px;">WEDDING INVITATION</p>
-            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-main">
-            <p style="font-size: 0.85rem; letter-spacing: 1px; opacity: 0.9;">Mempelai Pria & Mempelai Wanita</p>
+            
+            <!-- Inisial & Ayat Pembuka -->
+            <div class="initial-badge" data-aos="fade-down">R & S</div>
+            
+            <p class="quote-box" data-aos="fade-up">
+                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
+            </p>
 
-            <div class="event-info" data-aos="fade-up">
-                <h3>AKAD NIKAH & RESEPSI</h3>
-                <p><strong>Hari / Tanggal:</strong><br>Jumat, 11 September 2026</p>
-                <p><strong>Waktu:</strong><br>08.00 WIB - Selesai</p>
-                <p><strong>Lokasi:</strong><br>Kediaman Mempelai Wanita</p>
+            <div class="section-divider"></div>
+
+            <!-- Header Slide Kedua -->
+            <h2 class="getting-married-title" data-aos="fade-up">We Are Getting Married</h2>
+            
+            <p class="wedding-opening-text" data-aos="fade-up">
+                Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
+            </p>
+
+            <!-- Profil Mempelai Pria -->
+            <div class="couple-group" data-aos="fade-up">
+                <div class="couple-name-nickname">Rizal</div>
+                <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
+                <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
             </div>
 
-            <p style="font-size: 0.8rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 15px;">MENUJU HARI BAHAGIA</p>
+            <div class="ampersand" data-aos="zoom-in">&</div>
+
+            <!-- Profil Mempelai Wanita -->
+            <div class="couple-group" data-aos="fade-up">
+                <div class="couple-name-nickname">Selvi</div>
+                <div class="couple-fullname">Nunik Selviana</div>
+                <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
+            </div>
+
+            <!-- Informasi Acara -->
+            <div class="event-info" data-aos="fade-up">
+                <h3>Acara Tasyakuran Pernikahan</h3>
+                <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
+                <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;" data-aos="fade-up">MENUJU HARI BAHAGIA</p>
             <div class="countdown" data-aos="fade-up">
                 <div class="time-box"><span id="days">00</span><label>HARI</label></div>
                 <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
                 <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
             </div>
+
         </div>
     </div>
 
@@ -309,7 +413,8 @@
             }
         }
 
-        const targetDate = new Date("September 11, 2026 08:00:00").getTime();
+        // Countdown Disesuaikan ke Tanggal Acara Tasyakuran (12 September 2026)
+        const targetDate = new Date("September 12, 2026 08:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
             const diff = targetDate - now;
