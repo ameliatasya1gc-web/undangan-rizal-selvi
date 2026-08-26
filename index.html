@@ -38,7 +38,7 @@
             position: relative;
         }
 
-        /* BACKGROUND UTAMA YANG STABIL */
+        /* BACKGROUND UTAMA */
         body::before {
             content: "";
             position: fixed;
@@ -62,7 +62,7 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 35px 20px;
+            padding: 30px 20px 25px 20px;
             z-index: 999;
             transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
             text-align: center;
@@ -79,7 +79,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .cover-title {
@@ -91,75 +91,75 @@
             opacity: 0.9;
         }
 
-        /* GAMBAR NAMA */
+        /* GAMBAR NAMA PNG */
         .name-image-cover {
             width: 260px !important;
             max-width: 75% !important;
             height: auto;
-            margin: 5px 0;
+            margin: 5px 0 0 0;
             display: block;
             filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
         }
 
-        .cover-subtitle {
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            opacity: 0.9;
-            text-transform: uppercase;
-        }
-
-        /* BAGIAN TAMU UNDANGAN DI ATAS TOMBOL */
-        .guest-section {
-            margin: auto 0;
+        /* GRUP BAGIAN BAWAH COVER (TAMU + TOMBOL BUKA UNDANGAN) */
+        .cover-bottom-group {
             width: 100%;
-            max-width: 320px;
+            max-width: 300px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* TAMU UNDANGAN (DIPERKECIL SIKIT) */
+        .guest-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .guest-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             opacity: 0.9;
         }
 
         .guest-name-box {
             background: rgba(11, 26, 48, 0.65);
             border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 8px;
-            padding: 8px 15px;
-            font-size: 0.85rem;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--accent-gold);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             backdrop-filter: blur(4px);
             width: 100%;
         }
 
         .guest-note {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             opacity: 0.75;
             font-style: italic;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .btn-open {
             border: 1.5px solid var(--accent-gold);
             background: rgba(11, 26, 48, 0.75);
             color: #fff;
-            padding: 11px 32px;
-            font-size: 0.85rem;
+            padding: 10px 28px;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: 0.3s;
             backdrop-filter: blur(5px);
-            margin-bottom: 15px;
         }
 
         .btn-open:hover {
@@ -427,17 +427,18 @@
         <div class="cover-header-group">
             <p class="cover-title">THE WEDDING OF</p>
             <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
-            <p class="cover-subtitle">Acara Tasyakuran Pernikahan</p>
         </div>
 
-        <!-- BAGIAN TAMU UNDANGAN DI ATAS TOMBOL -->
-        <div class="guest-section">
-            <p class="guest-label">Kepada Yth, Bapak, Ibu, Saudara/i :</p>
-            <div class="guest-name-box" id="guestName">Tamu Undangan</div>
-            <p class="guest-note">Mohon maaf apabila ada kesalahan penulisan nama</p>
-        </div>
+        <!-- AREA BAWAH COVER -->
+        <div class="cover-bottom-group">
+            <div class="guest-section">
+                <p class="guest-label">Kepada Yth, Bapak, Ibu, Saudara/i :</p>
+                <div class="guest-name-box" id="guestName">Tamu Undangan</div>
+                <p class="guest-note">Mohon maaf apabila ada kesalahan penulisan nama</p>
+            </div>
 
-        <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
+            <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
+        </div>
     </div>
 
     <!-- TOMBOL KONTROL MUSIK -->
@@ -519,7 +520,6 @@
     <script>
         AOS.init({ once: true });
 
-        // Mengambil nama tamu dari URL (Contoh: namadomain.com/?to=Budi)
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to');
         if (guestName) {
