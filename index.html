@@ -362,6 +362,55 @@
             letter-spacing: 1px;
         }
 
+        /* GALERI FOTO SECTION (2 FOTO) */
+        .gallery-section {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .gallery-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            height: 180px;
+            background: rgba(11, 26, 48, 0.8);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
         /* WISHES & UCAPAN SECTION */
         .wishes-section {
             margin-top: 35px;
@@ -632,6 +681,21 @@
                 <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
                 <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
+            </div>
+
+            <!-- SECTION GALERI FOTO (2 FOTO) -->
+            <div class="gallery-section" data-aos="fade-up">
+                <h3 class="gallery-title">Our Moments</h3>
+                <p class="gallery-subtitle">Momen bahagia kebersamaan kami</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="galeri-1.jpg" alt="Momen 1" onerror="this.src='foto-prewedding.jpg'">
+                    </div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="galeri-2.jpg" alt="Momen 2" onerror="this.src='foto-prewedding.jpg'">
+                    </div>
+                </div>
             </div>
 
             <!-- SECTION UCAPAN & DOA -->
