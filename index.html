@@ -14,7 +14,7 @@
     <style>
         :root {
             --bg-color: #0b1a30;
-            --card-bg: rgba(19, 39, 67, 0.5); /* Latar transparan 50% */
+            --card-bg: rgba(19, 39, 67, 0.55); /* Transparan card disesuaikan */
             --accent-gold: #d4af37;
             --text-light: #f0f4f8;
         }
@@ -23,6 +23,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            color-scheme: light only; /* Mencegah dark mode otomatis merubah warna */
         }
 
         body {
@@ -34,7 +35,19 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-            background: linear-gradient(rgba(11, 26, 48, 0.45), rgba(11, 26, 48, 0.9)), url('foto-prewedding.jpg') center/cover fixed no-repeat;
+            position: relative;
+        }
+
+        /* BACKGROUND UTAMA YANG STABIL (Tanpa fixed agar tidak putih saat di-scroll) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
+            z-index: -1;
         }
 
         /* COVER SCREEN */
@@ -44,7 +57,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(11, 26, 48, 0.45), rgba(11, 26, 48, 0.9)), url('foto-prewedding.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -78,14 +91,13 @@
             opacity: 0.9;
         }
 
-        /* CSS GAMBAR NAMA (Tanpa Filter Invert) */
+        /* GAMBAR NAMA PUTIH ASLI */
         .name-image-cover {
             width: 300px !important;
             max-width: 80% !important;
             height: auto;
             margin: 10px 0;
             display: block;
-            /* Hanya memberi sedikit bayangan agar teks tampak menonjol */
             filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
         }
 
@@ -144,6 +156,7 @@
             width: 100%;
             max-width: 450px;
             padding: 25px 15px;
+            z-index: 1;
         }
 
         .container {
