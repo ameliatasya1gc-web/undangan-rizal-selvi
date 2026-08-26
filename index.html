@@ -37,7 +37,6 @@
             position: relative;
         }
 
-        /* BACKGROUND UTAMA */
         body::before {
             content: "";
             position: fixed;
@@ -49,7 +48,6 @@
             z-index: -1;
         }
 
-        /* COVER SCREEN */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -210,12 +208,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .initial-badge {
@@ -367,11 +359,12 @@
             letter-spacing: 1px;
         }
 
-        /* GALERI FOTO SECTION */
+        /* GALERI FOTO (DIPASTIKAN TAMPIL DENGAN BENAR) */
         .gallery-section {
             margin-top: 35px;
             padding-top: 25px;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
+            display: block !important;
         }
 
         .gallery-title {
@@ -392,8 +385,9 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
+            width: 100%;
         }
 
         .gallery-item {
@@ -409,14 +403,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            display: block;
         }
 
-        .gallery-item img:hover {
-            transform: scale(1.08);
-        }
-
-        /* WISHES & UCAPAN SECTION */
+        /* UCAPAN & DOA SECTION */
         .wishes-section {
             margin-top: 35px;
             padding-top: 25px;
@@ -451,12 +441,6 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
             outline: none;
-            transition: 0.3s;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
         }
 
         .form-textarea {
@@ -474,12 +458,6 @@
             letter-spacing: 1px;
             border-radius: 20px;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-submit-wish:hover {
-            background: #b5932a;
-            border-color: #b5932a;
         }
 
         .wishes-container {
@@ -488,7 +466,6 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            padding-right: 5px;
         }
 
         .wish-card {
@@ -570,12 +547,6 @@
             color: var(--accent-gold);
             font-size: 0.7rem;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-copy:hover {
-            background: var(--accent-gold);
-            color: #0b1a30;
         }
 
         .closing-text {
@@ -688,7 +659,7 @@
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
             </div>
 
-            <!-- SECTION GALERI FOTO (2 FOTO) -->
+            <!-- GALERI FOTO (DITAROH DI ATAS UCAPAN & DOA) -->
             <div class="gallery-section">
                 <h3 class="gallery-title">Our Moments</h3>
                 <p class="gallery-subtitle">Momen bahagia kebersamaan kami</p>
@@ -703,7 +674,7 @@
                 </div>
             </div>
 
-            <!-- SECTION UCAPAN & DOA -->
+            <!-- UCAPAN & DOA -->
             <div class="wishes-section">
                 <h3 class="wishes-title">Ucapan & Doa</h3>
                 <form class="wishes-form" onsubmit="submitWish(event)">
@@ -712,11 +683,10 @@
                     <button type="submit" class="btn-submit-wish">Kirimkan Ucapan</button>
                 </form>
 
-                <div class="wishes-container" id="wishesContainer">
-                    <!-- Ucapan akan dimuat di sini -->
-                </div>
+                <div class="wishes-container" id="wishesContainer"></div>
             </div>
 
+            <!-- LOVE GIFT -->
             <div class="gift-section">
                 <h3 class="gift-title">Love Gift</h3>
                 <p class="gift-text">
@@ -774,9 +744,7 @@
                         clearInterval(fadeInterval);
                     }
                 }, 150);
-            }).catch(error => {
-                console.log("Autoplay ditolak oleh browser:", error);
-            });
+            }).catch(error => console.log(error));
         }
 
         function pauseAudio() {
