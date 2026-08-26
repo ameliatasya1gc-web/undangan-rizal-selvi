@@ -101,7 +101,7 @@
             filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
         }
 
-        /* GRUP BAGIAN BAWAH COVER (TAMU + TOMBOL BUKA UNDANGAN) */
+        /* GRUP BAGIAN BAWAH COVER */
         .cover-bottom-group {
             width: 100%;
             max-width: 300px;
@@ -111,7 +111,7 @@
             margin-bottom: 10px;
         }
 
-        /* TAMU UNDANGAN (DIPERKECIL SIKIT) */
+        /* TAMU UNDANGAN */
         .guest-section {
             width: 100%;
             display: flex;
@@ -446,59 +446,73 @@
 
     <!-- HALAMAN DETAIL ACARA UTAMA -->
     <div class="main-content">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
             
-            <div class="initial-badge" data-aos="fade-down">R & S</div>
+            <!-- BLOK 1: INISIAL & AYAT -->
+            <div data-aos="fade-down" data-aos-duration="1000">
+                <div class="initial-badge">R & S</div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <p class="quote-box">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                    <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
+                </p>
+            </div>
+
+            <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300"></div>
+
+            <!-- BLOK 2: WE ARE GETTING MARRIED -->
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <h2 class="getting-married-title">We Are Getting Married</h2>
+            </div>
             
-            <p class="quote-box" data-aos="fade-up">
-                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-                <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
-            </p>
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250">
+                <p class="wedding-opening-text">
+                    Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
+                </p>
+            </div>
 
-            <div class="section-divider"></div>
-
-            <h2 class="getting-married-title" data-aos="fade-up">We Are Getting Married</h2>
-            
-            <p class="wedding-opening-text" data-aos="fade-up">
-                Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
-            </p>
-
-            <div class="couple-group" data-aos="fade-up">
+            <!-- BLOK 3: MEMPELAI -->
+            <div class="couple-group" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
                 <div class="couple-name-nickname">Rizal</div>
                 <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
                 <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
             </div>
 
-            <div class="ampersand" data-aos="zoom-in">&</div>
+            <div class="ampersand" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="250">&</div>
 
-            <div class="couple-group" data-aos="fade-up">
+            <div class="couple-group" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
                 <div class="couple-name-nickname">Selvi</div>
                 <div class="couple-fullname">Nunik Selviana</div>
                 <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
             </div>
 
-            <div class="event-info" data-aos="fade-up">
+            <!-- DETAIL ACARA -->
+            <div class="event-info" data-aos="fade-up" data-aos-duration="1000">
                 <h3>Acara Tasyakuran Pernikahan</h3>
                 <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
                 <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
             </div>
 
             <!-- COUNTDOWN -->
-            <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
-            <div class="countdown">
-                <div class="time-box"><span id="days">00</span><label>HARI</label></div>
-                <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
-                <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
-                <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
+                <div class="countdown">
+                    <div class="time-box"><span id="days">00</span><label>HARI</label></div>
+                    <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
+                    <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
+                    <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
+                </div>
             </div>
 
             <!-- LOVE GIFT -->
-            <div class="gift-section" data-aos="fade-up">
+            <div class="gift-section" data-aos="fade-up" data-aos-duration="1000">
                 <h3 class="gift-title">Love Gift</h3>
                 <p class="gift-text">
                     Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
                 </p>
-                <div class="bank-card">
+                <div class="bank-card" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
                     <div class="bank-name">BCA</div>
                     <div class="account-number">3571153368</div>
                     <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
@@ -506,7 +520,7 @@
             </div>
 
             <!-- CLOSING -->
-            <div class="closing-text" data-aos="fade-up">
+            <div class="closing-text" data-aos="fade-up" data-aos-duration="1000">
                 <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
                 <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Kami yang berbahagia,</p>
                 <div class="closing-signature">Rizal & Selvi</div>
@@ -518,7 +532,10 @@
     <!-- JAVASCRIPT LOGIC -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true });
+        AOS.init({ 
+            once: false,
+            mirror: true
+        });
 
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to');
@@ -533,6 +550,9 @@
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('open');
             playAudioWithFadeIn();
+            setTimeout(() => {
+                AOS.refresh();
+            }, 400);
         }
 
         function playAudioWithFadeIn() {
