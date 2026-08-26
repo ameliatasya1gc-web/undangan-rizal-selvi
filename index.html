@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Tasyakuran - Rizal & Selvi</title>
+    <title>Undangan Pernikahan R & S</title>
     
-    <!-- Fonts & AOS Animation Library -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <style>
-        :root {
-            --bg-color: #0b1a30;
-            --card-bg: rgba(19, 39, 67, 0.65);
-            --accent-gold: #d4af37;
-            --text-light: #f0f4f8;
-        }
+    <!-- AOS Library (Animasi Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <style>
+        /* Reset Base CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            color-scheme: light only;
         }
 
         html {
@@ -31,595 +24,162 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-light);
-            position: relative;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Warna background gelap */
+            color: #ffffff;
+            /* Pastikan overflow-y diatur ke auto/visible agar bisa discroll */
+            overflow-y: auto;
             overflow-x: hidden;
         }
 
-        /* BACKGROUND UTAMA */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(11, 26, 48, 0.3), rgba(11, 26, 48, 0.7)), url('foto-prewedding.jpg') center/cover no-repeat;
-            z-index: -1;
-        }
-
-        /* COVER SCREEN */
-        .cover-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
+        /* Section 1: Hero / Cover */
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 30px 20px 25px 20px;
-            z-index: 999;
-            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+            padding: 20px;
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80') center/cover no-repeat;
             text-align: center;
         }
 
-        .cover-screen.open {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .cover-header-group {
+        /* Card Ayat / Kutipan */
+        .quote-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 16px;
+            padding: 30px 20px;
+            max-width: 500px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .cover-title {
-            font-size: 0.75rem;
+        .quote-card h1 {
+            font-family: 'Cinzel', serif;
+            color: #d4af37; /* Warna Emas */
+            font-size: 2rem;
             letter-spacing: 4px;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            opacity: 0.9;
+            margin-bottom: 20px;
         }
 
-        /* GAMBAR NAMA PNG */
-        .name-image-cover {
-            width: 260px !important;
-            max-width: 75% !important;
-            height: auto;
-            margin: 5px 0 0 0;
-            display: block;
-            filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
-        }
-
-        /* GRUP BAGIAN BAWAH COVER */
-        .cover-bottom-group {
-            width: 100%;
-            max-width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        /* TAMU UNDANGAN */
-        .guest-section {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .guest-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-            opacity: 0.9;
-        }
-
-        .guest-name-box {
-            background: rgba(11, 26, 48, 0.65);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-            margin-bottom: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            backdrop-filter: blur(4px);
-            width: 100%;
-        }
-
-        .guest-note {
-            font-size: 0.55rem;
-            opacity: 0.75;
+        .quote-card p {
             font-style: italic;
-            line-height: 1.2;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+            margin-bottom: 15px;
         }
 
-        .btn-open {
-            border: 1.5px solid var(--accent-gold);
-            background: rgba(11, 26, 48, 0.75);
-            color: #fff;
-            padding: 10px 28px;
+        .quote-card .surah {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+
+        .scroll-hint {
             font-size: 0.8rem;
-            letter-spacing: 1px;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: 0.3s;
-            backdrop-filter: blur(5px);
+            color: #94a3b8;
+            animation: bounce 2s infinite;
         }
 
-        .btn-open:hover {
-            background: rgba(212, 175, 55, 0.8);
-            color: #0b1a30;
+        /* Section 2: Detail Acara */
+        .content-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        /* TOMBOL MUSIK FLOATING */
-        .music-control {
+        .content-section h2 {
+            font-family: 'Cinzel', serif;
+            color: #d4af37;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .event-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        /* Music Button Floating */
+        .music-btn {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             width: 45px;
             height: 45px;
-            background: rgba(19, 39, 67, 0.8);
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            color: #d4af37;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            z-index: 9999;
-            transition: transform 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .music-control.rotating {
-            animation: spin 3s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* CONTAINER SLIDE DENGAN SNAP SCROLL */
-        .slide-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            width: 100%;
-        }
-
-        /* TIAP SLIDE */
-        .slide-section {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 15px;
-        }
-
-        .card-box {
-            width: 100%;
-            max-width: 400px;
-            background: var(--card-bg);
-            border: 1px solid var(--accent-gold);
-            border-radius: 16px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            position: relative;
-        }
-
-        /* PETUNJUK SWIPE / SCROLL BAWAH */
-        .scroll-hint {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.65rem;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-            opacity: 0.8;
-            animation: bounce 2s infinite;
+            z-index: 999;
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-            40% { transform: translate(-50%, -6px); }
-            60% { transform: translate(-50%, -3px); }
-        }
-
-        .initial-badge {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-        }
-
-        .quote-box {
-            font-size: 0.8rem;
-            line-height: 1.7;
-            opacity: 0.9;
-            margin: 15px 0;
-            padding: 0 5px;
-            font-style: italic;
-        }
-
-        .quote-surah {
-            display: block;
-            margin-top: 8px;
-            font-weight: 600;
-            font-style: normal;
-            color: var(--accent-gold);
-            font-size: 0.75rem;
-        }
-
-        .getting-married-title {
-            font-family: 'Cinzel', serif;
-            color: var(--accent-gold);
-            letter-spacing: 2px;
-            font-size: 1rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .wedding-opening-text {
-            font-size: 0.8rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            opacity: 0.95;
-        }
-
-        .couple-group {
-            margin: 10px 0;
-        }
-
-        .couple-name-nickname {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: var(--accent-gold);
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 3px;
-        }
-
-        .couple-fullname {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .parents-info {
-            font-size: 0.75rem;
-            opacity: 0.85;
-            line-height: 1.4;
-        }
-
-        .ampersand {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: var(--accent-gold);
-            margin: 8px 0;
-            font-weight: 700;
-        }
-
-        .event-info h3 {
-            color: var(--accent-gold);
-            font-size: 1rem;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .event-info p {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            margin-bottom: 10px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-        }
-
-        .time-box {
-            border: 1px solid var(--accent-gold);
-            border-radius: 8px;
-            padding: 8px 6px;
-            min-width: 60px;
-            background: rgba(11, 26, 48, 0.6);
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
-
-        .time-box label {
-            font-size: 0.6rem;
-            letter-spacing: 1px;
-        }
-
-        .gift-title {
-            font-family: 'Cinzel', serif;
-            color: var(--accent-gold);
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .gift-text {
-            font-size: 0.8rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-
-        .bank-card {
-            background: rgba(11, 26, 48, 0.7);
-            border: 1px solid var(--accent-gold);
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .bank-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-        }
-
-        .account-number {
-            font-size: 1.15rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin: 6px 0 4px 0;
-        }
-
-        .account-name {
-            font-size: 0.8rem;
-            opacity: 0.85;
-        }
-
-        .closing-text {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-
-        .closing-signature {
-            font-family: 'Cinzel', serif;
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-top: 15px;
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
         }
     </style>
 </head>
 <body>
 
-    <!-- ELEMEN AUDIO -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="musik.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- HALAMAN COVER UTAMA -->
-    <div class="cover-screen" id="coverScreen">
-        <div class="cover-header-group">
-            <p class="cover-title">THE WEDDING OF</p>
-            <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
+    <!-- Section 1: Utama / Kutipan -->
+    <section class="hero">
+        <div class="quote-card" data-aos="fade-up" data-aos-duration="1000">
+            <h1>R & S</h1>
+            <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
+            <div class="surah">- QS. Ar-Rum : 21 -</div>
+            <div class="scroll-hint">↓ Geser ke bawah</div>
         </div>
+    </section>
 
-        <!-- AREA BAWAH COVER -->
-        <div class="cover-bottom-group">
-            <div class="guest-section">
-                <p class="guest-label">Kepada Yth, Bapak, Ibu, Saudara/i :</p>
-                <div class="guest-name-box" id="guestName">Tamu Undangan</div>
-                <p class="guest-note">Mohon maaf apabila ada kesalahan penulisan nama</p>
-            </div>
-
-            <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
-        </div>
-    </div>
-
-    <!-- TOMBOL KONTROL MUSIK -->
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
-
-    <!-- HALAMAN SLIDE UNDANGAN UTAMA -->
-    <div class="slide-container" id="slideContainer">
+    <!-- Section 2: Mempelai & Acara (Teks yang sebelumnya hilang) -->
+    <section class="content-section">
+        <h2 data-aos="fade-up">Acara Pernikahan</h2>
         
-        <!-- SLIDE 1: AYAT SUCI -->
-        <section class="slide-section" id="slide1">
-            <div class="card-box" data-aos="zoom-in" data-aos-duration="1000">
-                <div class="initial-badge">R & S</div>
-                <p class="quote-box">
-                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-                    <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
-                </p>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
-            </div>
-        </section>
+        <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>Akad Nikah</h3>
+            <p style="margin-top: 10px; color: #94a3b8;">Sabtu, 20 Oktober 2026</p>
+            <p>Pukul: 08.00 WIB - Selesai</p>
+            <p style="font-size: 0.85rem; margin-top: 5px;">Lokasi: Masjid Agung Kota</p>
+        </div>
 
-        <!-- SLIDE 2: MEMPELAI -->
-        <section class="slide-section" id="slide2">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class="getting-married-title">We Are Getting Married</h2>
-                <p class="wedding-opening-text">
-                    Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
-                </p>
+        <div class="event-card" data-aos="fade-up" data-aos-delay="400">
+            <h3>Resepsi</h3>
+            <p style="margin-top: 10px; color: #94a3b8;">Sabtu, 20 Oktober 2026</p>
+            <p>Pukul: 11.00 WIB - Selesai</p>
+            <p style="font-size: 0.85rem; margin-top: 5px;">Lokasi: Gedung Serbaguna</p>
+        </div>
+    </section>
 
-                <div class="couple-group">
-                    <div class="couple-name-nickname">Rizal</div>
-                    <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
-                    <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
-                </div>
+    <!-- Tombol Musik -->
+    <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
-                <div class="ampersand">&</div>
-
-                <div class="couple-group">
-                    <div class="couple-name-nickname">Selvi</div>
-                    <div class="couple-fullname">Nunik Selviana</div>
-                    <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
-                </div>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
-            </div>
-        </section>
-
-        <!-- SLIDE 3: ACARA & COUNTDOWN -->
-        <section class="slide-section" id="slide3">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
-                <div class="event-info">
-                    <h3>Acara Tasyakuran Pernikahan</h3>
-                    <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
-                    <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
-                </div>
-
-                <p style="font-size: 0.7rem; letter-spacing: 2px; color: var(--accent-gold); margin-top: 20px; margin-bottom: 8px;">MENUJU HARI BAHAGIA</p>
-                <div class="countdown">
-                    <div class="time-box"><span id="days">00</span><label>HARI</label></div>
-                    <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
-                    <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
-                    <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
-                </div>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
-            </div>
-        </section>
-
-        <!-- SLIDE 4: LOVE GIFT & PENUTUP -->
-        <section class="slide-section" id="slide4">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
-                <h3 class="gift-title">Love Gift</h3>
-                <p class="gift-text">
-                    Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
-                </p>
-                <div class="bank-card">
-                    <div class="bank-name">BCA</div>
-                    <div class="account-number">3571153368</div>
-                    <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
-                </div>
-
-                <div class="closing-text" style="margin-top: 25px;">
-                    <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
-                    <p style="margin-top: 15px; font-size: 0.78rem; opacity: 0.8;">Kami yang berbahagia,</p>
-                    <div class="closing-signature">Rizal & Selvi</div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Script AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ 
-            once: false,
-            mirror: true
+        // Inisialisasi AOS (Penting agar konten bawah muncul saat digulir)
+        AOS.init({
+            duration: 800,
+            once: true // Animasi hanya berjalan sekali agar tidak hilang kembali
         });
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const guestName = urlParams.get('to');
-        if (guestName) {
-            document.getElementById('guestName').innerText = guestName;
-        }
-
-        const bgMusic = document.getElementById('bgMusic');
-        const musicControl = document.querySelector('.music-control');
-        let isPlaying = false;
-
-        function openInvitation() {
-            document.getElementById('coverScreen').classList.add('open');
-            playAudioWithFadeIn();
-            
-            // Scroll otomatis ke slide 1 saat dibuka
-            document.getElementById('slide1').scrollIntoView();
-
-            setTimeout(() => {
-                AOS.refresh();
-            }, 400);
-        }
-
-        function playAudioWithFadeIn() {
-            bgMusic.volume = 0;
-            bgMusic.play().then(() => {
-                isPlaying = true;
-                musicControl.innerHTML = '🎵';
-                musicControl.classList.add('rotating');
-
-                let vol = 0;
-                const fadeInterval = setInterval(() => {
-                    if (vol < 0.6) {
-                        vol += 0.05;
-                        bgMusic.volume = vol;
-                    } else {
-                        clearInterval(fadeInterval);
-                    }
-                }, 150);
-            }).catch(error => {
-                console.log("Autoplay ditolak oleh browser:", error);
-            });
-        }
-
-        function pauseAudio() {
-            bgMusic.pause();
-            isPlaying = false;
-            musicControl.innerHTML = '🔇';
-            musicControl.classList.remove('rotating');
-        }
-
         function toggleMusic() {
-            if (isPlaying) {
-                pauseAudio();
-            } else {
-                playAudioWithFadeIn();
-            }
+            alert("Fitur musik diaktifkan!");
         }
-
-        function updateCountdown() {
-            const targetDate = new Date("September 12, 2026 08:00:00").getTime();
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-
-            if (diff > 0) {
-                document.getElementById("days").innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                document.getElementById("seconds").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-            }
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
