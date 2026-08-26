@@ -14,7 +14,7 @@
     <style>
         :root {
             --bg-color: #0b1a30;
-            --card-bg: rgba(19, 39, 67, 0.5); /* Transparan 50% */
+            --card-bg: rgba(19, 39, 67, 0.5); /* Latar transparan 50% */
             --accent-gold: #d4af37;
             --text-light: #f0f4f8;
         }
@@ -78,17 +78,15 @@
             opacity: 0.9;
         }
 
-        /* PERBAIKAN FILTER GAMBAR PUTIH UNTUK HP */
+        /* CSS GAMBAR NAMA (Tanpa Filter Invert) */
         .name-image-cover {
             width: 300px !important;
             max-width: 80% !important;
             height: auto;
             margin: 10px 0;
-            -webkit-filter: brightness(0) invert(1) drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7)) !important;
-            filter: brightness(0) invert(1) drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7)) !important;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
             display: block;
+            /* Hanya memberi sedikit bayangan agar teks tampak menonjol */
+            filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
         }
 
         .btn-open {
