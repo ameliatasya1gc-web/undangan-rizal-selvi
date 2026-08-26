@@ -14,7 +14,7 @@
     <style>
         :root {
             --bg-color: #0b1a30;
-            --card-bg: rgba(19, 39, 67, 0.55);
+            --card-bg: rgba(19, 39, 67, 0.65);
             --accent-gold: #d4af37;
             --text-light: #f0f4f8;
         }
@@ -26,16 +26,16 @@
             color-scheme: light only;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
             position: relative;
+            overflow-x: hidden;
         }
 
         /* BACKGROUND UTAMA */
@@ -46,7 +46,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(11, 26, 48, 0.3), rgba(11, 26, 48, 0.7)), url('foto-prewedding.jpg') center/cover no-repeat;
             z-index: -1;
         }
 
@@ -56,7 +56,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
@@ -198,24 +198,57 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* MAIN CONTENT */
-        .main-content {
+        /* CONTAINER SLIDE DENGAN SNAP SCROLL */
+        .slide-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
             width: 100%;
-            max-width: 450px;
-            padding: 25px 15px;
-            z-index: 1;
         }
 
-        .container {
+        /* TIAP SLIDE */
+        .slide-section {
+            height: 100vh;
             width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 15px;
+        }
+
+        .card-box {
+            width: 100%;
+            max-width: 400px;
             background: var(--card-bg);
             border: 1px solid var(--accent-gold);
             border-radius: 16px;
-            padding: 35px 20px;
+            padding: 30px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+            position: relative;
+        }
+
+        /* PETUNJUK SWIPE / SCROLL BAWAH */
+        .scroll-hint {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+            40% { transform: translate(-50%, -6px); }
+            60% { transform: translate(-50%, -3px); }
         }
 
         .initial-badge {
@@ -231,7 +264,7 @@
             font-size: 0.8rem;
             line-height: 1.7;
             opacity: 0.9;
-            margin: 15px 0 25px 0;
+            margin: 15px 0;
             padding: 0 5px;
             font-style: italic;
         }
@@ -243,13 +276,6 @@
             font-style: normal;
             color: var(--accent-gold);
             font-size: 0.75rem;
-        }
-
-        .section-divider {
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
-            margin: 25px auto;
         }
 
         .getting-married-title {
@@ -264,17 +290,17 @@
         .wedding-opening-text {
             font-size: 0.8rem;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             opacity: 0.95;
         }
 
         .couple-group {
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         .couple-name-nickname {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--accent-gold);
             font-weight: 700;
             letter-spacing: 1px;
@@ -282,30 +308,23 @@
         }
 
         .couple-fullname {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .parents-info {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             opacity: 0.85;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .ampersand {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--accent-gold);
-            margin: 15px 0;
+            margin: 8px 0;
             font-weight: 700;
-        }
-
-        .event-info {
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 20px 10px;
-            margin: 30px 0 20px 0;
         }
 
         .event-info h3 {
@@ -348,12 +367,6 @@
             letter-spacing: 1px;
         }
 
-        .gift-section {
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
         .gift-title {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
@@ -367,14 +380,14 @@
             font-size: 0.8rem;
             line-height: 1.6;
             opacity: 0.9;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .bank-card {
             background: rgba(11, 26, 48, 0.7);
             border: 1px solid var(--accent-gold);
             border-radius: 12px;
-            padding: 18px 15px;
+            padding: 15px;
             margin: 15px 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
@@ -390,7 +403,7 @@
             font-size: 1.15rem;
             font-weight: 600;
             letter-spacing: 2px;
-            margin: 8px 0 4px 0;
+            margin: 6px 0 4px 0;
         }
 
         .account-name {
@@ -401,7 +414,6 @@
         .closing-text {
             font-size: 0.85rem;
             line-height: 1.7;
-            margin: 35px 0 20px 0;
             opacity: 0.95;
         }
 
@@ -411,7 +423,7 @@
             font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 1px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -444,89 +456,87 @@
     <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- HALAMAN DETAIL ACARA UTAMA -->
-    <div class="main-content">
-        <div class="container">
-            
-            <!-- BLOK 1: INISIAL & AYAT -->
-            <div data-aos="fade-down" data-aos-duration="1000">
+    <!-- HALAMAN SLIDE UNDANGAN UTAMA -->
+    <div class="slide-container" id="slideContainer">
+        
+        <!-- SLIDE 1: AYAT SUCI -->
+        <section class="slide-section" id="slide1">
+            <div class="card-box" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="initial-badge">R & S</div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <p class="quote-box">
                     "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
                     <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
                 </p>
+                <div class="scroll-hint">↓ Geser ke bawah</div>
             </div>
+        </section>
 
-            <div class="section-divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300"></div>
-
-            <!-- BLOK 2: WE ARE GETTING MARRIED -->
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+        <!-- SLIDE 2: MEMPELAI -->
+        <section class="slide-section" id="slide2">
+            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
                 <h2 class="getting-married-title">We Are Getting Married</h2>
-            </div>
-            
-            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250">
                 <p class="wedding-opening-text">
                     Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
                 </p>
+
+                <div class="couple-group">
+                    <div class="couple-name-nickname">Rizal</div>
+                    <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
+                    <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
+                </div>
+
+                <div class="ampersand">&</div>
+
+                <div class="couple-group">
+                    <div class="couple-name-nickname">Selvi</div>
+                    <div class="couple-fullname">Nunik Selviana</div>
+                    <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
+                </div>
+                <div class="scroll-hint">↓ Geser ke bawah</div>
             </div>
+        </section>
 
-            <!-- BLOK 3: MEMPELAI -->
-            <div class="couple-group" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
-                <div class="couple-name-nickname">Rizal</div>
-                <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
-                <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
-            </div>
+        <!-- SLIDE 3: ACARA & COUNTDOWN -->
+        <section class="slide-section" id="slide3">
+            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
+                <div class="event-info">
+                    <h3>Acara Tasyakuran Pernikahan</h3>
+                    <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
+                    <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
+                </div>
 
-            <div class="ampersand" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="250">&</div>
-
-            <div class="couple-group" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
-                <div class="couple-name-nickname">Selvi</div>
-                <div class="couple-fullname">Nunik Selviana</div>
-                <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
-            </div>
-
-            <!-- DETAIL ACARA -->
-            <div class="event-info" data-aos="fade-up" data-aos-duration="1000">
-                <h3>Acara Tasyakuran Pernikahan</h3>
-                <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
-                <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
-            </div>
-
-            <!-- COUNTDOWN -->
-            <div data-aos="fade-up" data-aos-duration="1000">
-                <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
+                <p style="font-size: 0.7rem; letter-spacing: 2px; color: var(--accent-gold); margin-top: 20px; margin-bottom: 8px;">MENUJU HARI BAHAGIA</p>
                 <div class="countdown">
                     <div class="time-box"><span id="days">00</span><label>HARI</label></div>
                     <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
                     <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
                     <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
                 </div>
+                <div class="scroll-hint">↓ Geser ke bawah</div>
             </div>
+        </section>
 
-            <!-- LOVE GIFT -->
-            <div class="gift-section" data-aos="fade-up" data-aos-duration="1000">
+        <!-- SLIDE 4: LOVE GIFT & PENUTUP -->
+        <section class="slide-section" id="slide4">
+            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
                 <h3 class="gift-title">Love Gift</h3>
                 <p class="gift-text">
                     Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
                 </p>
-                <div class="bank-card" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
+                <div class="bank-card">
                     <div class="bank-name">BCA</div>
                     <div class="account-number">3571153368</div>
                     <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
                 </div>
-            </div>
 
-            <!-- CLOSING -->
-            <div class="closing-text" data-aos="fade-up" data-aos-duration="1000">
-                <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
-                <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Kami yang berbahagia,</p>
-                <div class="closing-signature">Rizal & Selvi</div>
+                <div class="closing-text" style="margin-top: 25px;">
+                    <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
+                    <p style="margin-top: 15px; font-size: 0.78rem; opacity: 0.8;">Kami yang berbahagia,</p>
+                    <div class="closing-signature">Rizal & Selvi</div>
+                </div>
             </div>
+        </section>
 
-        </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -550,6 +560,10 @@
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('open');
             playAudioWithFadeIn();
+            
+            // Scroll otomatis ke slide 1 saat dibuka
+            document.getElementById('slide1').scrollIntoView();
+
             setTimeout(() => {
                 AOS.refresh();
             }, 400);
