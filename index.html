@@ -317,7 +317,6 @@
             margin-bottom: 10px;
         }
 
-        /* TOMBOL GOOGLE MAPS */
         .btn-map {
             display: inline-block;
             margin-top: 10px;
@@ -361,6 +360,101 @@
         .time-box label {
             font-size: 0.6rem;
             letter-spacing: 1px;
+        }
+
+        /* WISHES & UCAPAN SECTION */
+        .wishes-section {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: left;
+        }
+
+        .wishes-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .wishes-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(11, 26, 48, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit-wish {
+            border: 1px solid var(--accent-gold);
+            background: var(--accent-gold);
+            color: #0b1a30;
+            padding: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit-wish:hover {
+            background: #b5932a;
+            border-color: #b5932a;
+        }
+
+        .wishes-container {
+            max-height: 250px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 5px;
+        }
+
+        .wish-card {
+            background: rgba(11, 26, 48, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .wish-name {
+            font-weight: 600;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .wish-message {
+            font-size: 0.78rem;
+            line-height: 1.4;
+            opacity: 0.9;
         }
 
         .gift-section {
@@ -413,7 +507,6 @@
             opacity: 0.85;
         }
 
-        /* TOMBOL SALIN REKENING */
         .btn-copy {
             margin-top: 10px;
             padding: 6px 16px;
@@ -447,7 +540,6 @@
             margin-top: 10px;
         }
 
-        /* TOAST NOTIFICATION */
         .toast {
             position: fixed;
             bottom: 80px;
@@ -542,6 +634,20 @@
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
             </div>
 
+            <!-- SECTION UCAPAN & DOA -->
+            <div class="wishes-section" data-aos="fade-up">
+                <h3 class="wishes-title">Ucapan & Doa</h3>
+                <form class="wishes-form" onsubmit="submitWish(event)">
+                    <input type="text" id="senderName" class="form-input" placeholder="Nama Anda" required>
+                    <textarea id="senderMessage" class="form-textarea" placeholder="Tuliskan ucapan & doa..." required></textarea>
+                    <button type="submit" class="btn-submit-wish">Kirimkan Ucapan</button>
+                </form>
+
+                <div class="wishes-container" id="wishesContainer">
+                    <!-- Ucapan akan dimuat di sini -->
+                </div>
+            </div>
+
             <div class="gift-section" data-aos="fade-up">
                 <h3 class="gift-title">Love Gift</h3>
                 <p class="gift-text">
@@ -574,6 +680,7 @@
         const guestName = urlParams.get('to');
         if (guestName) {
             document.getElementById('guestName').innerText = guestName;
+            document.getElementById('senderName').value = guestName;
         }
 
         const bgMusic = document.getElementById('bgMusic');
@@ -642,18 +749,65 @@
         function copyAccount() {
             const accNum = document.getElementById("accountNo").innerText;
             navigator.clipboard.writeText(accNum).then(() => {
-                showToast();
+                showToast("Nomor rekening berhasil disalin!");
             });
         }
 
-        function showToast() {
+        function showToast(msg) {
             const toast = document.getElementById("toast");
+            toast.innerText = msg;
             toast.classList.add("show");
             setTimeout(() => {
                 toast.classList.remove("show");
             }, 2000);
         }
 
+        /* LOGIC UNTUK UCAPAN & DOA */
+        function loadWishes() {
+            const wishes = JSON.parse(localStorage.getItem('wedding_wishes')) || [];
+            const container = document.getElementById('wishesContainer');
+            container.innerHTML = '';
+
+            if (wishes.length === 0) {
+                container.innerHTML = '<p style="font-size: 0.75rem; opacity: 0.7; text-align: center;">Belum ada ucapan. Jadilah yang pertama memberikan doa!</p>';
+                return;
+            }
+
+            wishes.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'wish-card';
+                card.innerHTML = `
+                    <div class="wish-name">${escapeHtml(item.name)}</div>
+                    <div class="wish-message">${escapeHtml(item.message)}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function submitWish(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('senderName');
+            const messageInput = document.getElementById('senderMessage');
+
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (!name || !message) return;
+
+            const wishes = JSON.parse(localStorage.getItem('wedding_wishes')) || [];
+            wishes.unshift({ name, message });
+            localStorage.setItem('wedding_wishes', JSON.stringify(wishes));
+
+            messageInput.value = '';
+            loadWishes();
+            showToast("Ucapan & doa berhasil dikirim!");
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        loadWishes();
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
