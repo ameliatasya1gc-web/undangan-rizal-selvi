@@ -14,7 +14,8 @@
     <style>
         :root {
             --bg-color: #0b1a30;
-            --card-bg: #132743;
+            /* Transparansi biru 50% */
+            --card-bg: rgba(19, 39, 67, 0.5);
             --accent-gold: #d4af37;
             --text-light: #f0f4f8;
         }
@@ -34,6 +35,8 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
+            /* Foto latar belakang utama */
+            background: linear-gradient(rgba(11, 26, 48, 0.45), rgba(11, 26, 48, 0.9)), url('foto-prewedding.jpg') center/cover fixed no-repeat;
         }
 
         /* COVER SCREEN */
@@ -111,7 +114,7 @@
             right: 25px;
             width: 45px;
             height: 45px;
-            background: var(--card-bg);
+            background: rgba(19, 39, 67, 0.8);
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
             border-radius: 50%;
@@ -123,6 +126,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             z-index: 9999;
             transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .music-control.rotating {
@@ -149,6 +153,8 @@
             padding: 35px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .initial-badge {
@@ -255,7 +261,6 @@
             margin-bottom: 10px;
         }
 
-        /* COUNTDOWN TIMING STYLES */
         .countdown {
             display: flex;
             justify-content: space-around;
@@ -282,7 +287,6 @@
             letter-spacing: 1px;
         }
 
-        /* STYLING LOVE GIFT & UCAPAN PENUTUP */
         .gift-section {
             margin-top: 35px;
             padding-top: 25px;
@@ -352,12 +356,10 @@
 </head>
 <body>
 
-    <!-- ELEMEN AUDIO -->
     <audio id="bgMusic" loop preload="auto">
         <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- HALAMAN COVER UTAMA -->
     <div class="cover-screen" id="coverScreen">
         <div class="cover-header-group">
             <p class="cover-title">THE WEDDING OF</p>
@@ -366,10 +368,8 @@
         <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
     </div>
 
-    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- HALAMAN DETAIL ACARA -->
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             
@@ -408,7 +408,6 @@
                 <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
             </div>
 
-            <!-- COUNTDOWN -->
             <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
             <div class="countdown">
                 <div class="time-box"><span id="days">00</span><label>HARI</label></div>
@@ -417,7 +416,6 @@
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
             </div>
 
-            <!-- BAGIAN LOVE GIFT -->
             <div class="gift-section" data-aos="fade-up">
                 <h3 class="gift-title">Love Gift</h3>
                 <p class="gift-text">
@@ -430,7 +428,6 @@
                 </div>
             </div>
 
-            <!-- TEKS PENUTUP -->
             <div class="closing-text" data-aos="fade-up">
                 <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
                 <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Kami yang berbahagia,</p>
@@ -440,12 +437,9 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: true
-        });
+        AOS.init({ once: true });
 
         const bgMusic = document.getElementById('bgMusic');
         const musicControl = document.querySelector('.music-control');
