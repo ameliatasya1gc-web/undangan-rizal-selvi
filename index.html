@@ -14,7 +14,7 @@
     <style>
         :root {
             --bg-color: #0b1a30;
-            --card-bg: rgba(19, 39, 67, 0.65);
+            --card-bg: rgba(19, 39, 67, 0.55);
             --accent-gold: #d4af37;
             --text-light: #f0f4f8;
         }
@@ -26,16 +26,16 @@
             color-scheme: light only;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-light);
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* BACKGROUND UTAMA */
@@ -46,7 +46,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(11, 26, 48, 0.3), rgba(11, 26, 48, 0.7)), url('foto-prewedding.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
             z-index: -1;
         }
 
@@ -56,7 +56,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             background: linear-gradient(rgba(11, 26, 48, 0.25), rgba(11, 26, 48, 0.65)), url('foto-prewedding.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
@@ -91,6 +91,7 @@
             opacity: 0.9;
         }
 
+        /* GAMBAR NAMA PNG */
         .name-image-cover {
             width: 260px !important;
             max-width: 75% !important;
@@ -100,6 +101,7 @@
             filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
         }
 
+        /* GRUP BAGIAN BAWAH COVER (TAMU + TOMBOL BUKA UNDANGAN) */
         .cover-bottom-group {
             width: 100%;
             max-width: 300px;
@@ -109,6 +111,7 @@
             margin-bottom: 10px;
         }
 
+        /* TAMU UNDANGAN (DIPERKECIL SIKIT) */
         .guest-section {
             width: 100%;
             display: flex;
@@ -195,325 +198,220 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* CONTAINER SLIDE DENGAN SNAP SCROLL */
-        .slide-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
+        /* MAIN CONTENT */
+        .main-content {
             width: 100%;
+            max-width: 450px;
+            padding: 25px 15px;
+            z-index: 1;
         }
 
-        .slide-section {
-            height: 100vh;
+        .container {
             width: 100%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 15px;
-        }
-
-        .card-box {
-            width: 100%;
-            max-width: 400px;
-            height: 88vh; /* Batasi tinggi card agar muat dalam layar HP */
-            max-height: 580px;
             background: var(--card-bg);
             border: 1px solid var(--accent-gold);
             border-radius: 16px;
-            padding: 22px 18px;
+            padding: 35px 20px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow-y: auto; /* Bisa di-scroll jika isinya agak panjang */
-        }
-
-        /* PETUNJUK SWIPE */
-        .scroll-hint {
-            font-size: 0.6rem;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-            opacity: 0.8;
-            margin-top: 5px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-4px); }
-            60% { transform: translateY(-2px); }
         }
 
         .initial-badge {
             font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent-gold);
             letter-spacing: 4px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .quote-box {
-            font-size: 0.75rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.7;
             opacity: 0.9;
-            margin: 5px 0;
+            margin: 15px 0 25px 0;
+            padding: 0 5px;
             font-style: italic;
         }
 
         .quote-surah {
             display: block;
-            margin-top: 5px;
+            margin-top: 8px;
             font-weight: 600;
             font-style: normal;
             color: var(--accent-gold);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+        }
+
+        .section-divider {
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+            margin: 25px auto;
         }
 
         .getting-married-title {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
             letter-spacing: 2px;
-            font-size: 0.95rem;
-            margin-bottom: 6px;
+            font-size: 1rem;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
 
         .wedding-opening-text {
-            font-size: 0.75rem;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
             opacity: 0.95;
         }
 
         .couple-group {
-            margin: 4px 0;
+            margin: 20px 0;
         }
 
         .couple-name-nickname {
             font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
+            font-size: 1.4rem;
             color: var(--accent-gold);
             font-weight: 700;
             letter-spacing: 1px;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .couple-fullname {
-            font-size: 0.78rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: 5px;
         }
 
         .parents-info {
-            font-size: 0.68rem;
+            font-size: 0.78rem;
             opacity: 0.85;
-            line-height: 1.3;
+            line-height: 1.5;
         }
 
         .ampersand {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             color: var(--accent-gold);
-            margin: 4px 0;
+            margin: 15px 0;
             font-weight: 700;
+        }
+
+        .event-info {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px 10px;
+            margin: 30px 0 20px 0;
         }
 
         .event-info h3 {
             color: var(--accent-gold);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
+            font-size: 1rem;
+            margin-bottom: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .event-info p {
-            font-size: 0.78rem;
-            line-height: 1.5;
-            margin-bottom: 6px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
         }
 
         .countdown {
             display: flex;
             justify-content: space-around;
-            margin-top: 8px;
+            margin-top: 15px;
         }
 
         .time-box {
             border: 1px solid var(--accent-gold);
-            border-radius: 6px;
-            padding: 6px 4px;
-            min-width: 52px;
+            border-radius: 8px;
+            padding: 8px 6px;
+            min-width: 60px;
             background: rgba(11, 26, 48, 0.6);
         }
 
         .time-box span {
             display: block;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--accent-gold);
         }
 
         .time-box label {
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             letter-spacing: 1px;
+        }
+
+        .gift-section {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .gift-title {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
             letter-spacing: 2px;
-            font-size: 1rem;
-            margin-bottom: 6px;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
             text-transform: uppercase;
         }
 
         .gift-text {
-            font-size: 0.75rem;
-            line-height: 1.5;
+            font-size: 0.8rem;
+            line-height: 1.6;
             opacity: 0.9;
-            margin-bottom: 8px;
+            margin-bottom: 20px;
         }
 
         .bank-card {
             background: rgba(11, 26, 48, 0.7);
             border: 1px solid var(--accent-gold);
-            border-radius: 10px;
-            padding: 10px;
-            margin: 8px 0;
+            border-radius: 12px;
+            padding: 18px 15px;
+            margin: 15px 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .bank-name {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-gold);
             letter-spacing: 1px;
         }
 
         .account-number {
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             letter-spacing: 2px;
-            margin: 4px 0 2px 0;
+            margin: 8px 0 4px 0;
         }
 
         .account-name {
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             opacity: 0.85;
-        }
-
-        /* STYLING KHUSUS WISHES / UCAPAN */
-        .wishes-title {
-            font-family: 'Cinzel', serif;
-            color: var(--accent-gold);
-            letter-spacing: 2px;
-            font-size: 1rem;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .wishes-subtitle {
-            font-size: 0.72rem;
-            opacity: 0.85;
-            margin-bottom: 10px;
-        }
-
-        .wishes-form {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: left;
-            margin-bottom: 10px;
-        }
-
-        .wishes-form input, .wishes-form textarea {
-            width: 100%;
-            background: rgba(11, 26, 48, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 6px;
-            padding: 8px 10px;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            outline: none;
-        }
-
-        .wishes-form textarea {
-            resize: none;
-            height: 55px;
-        }
-
-        .wishes-form input:focus, .wishes-form textarea:focus {
-            border-color: var(--accent-gold);
-        }
-
-        .btn-send-wish {
-            background: var(--accent-gold);
-            color: #0b1a30;
-            border: none;
-            border-radius: 6px;
-            padding: 8px;
-            font-weight: 600;
-            font-size: 0.75rem;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: 0.2s;
-            text-align: center;
-        }
-
-        .btn-send-wish:hover {
-            opacity: 0.9;
-        }
-
-        .wishes-container {
-            max-height: 120px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            text-align: left;
-            padding-right: 4px;
-        }
-
-        .wish-item {
-            background: rgba(11, 26, 48, 0.5);
-            border-left: 2px solid var(--accent-gold);
-            padding: 6px 8px;
-            border-radius: 4px;
-        }
-
-        .wish-name {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
-
-        .wish-text {
-            font-size: 0.68rem;
-            opacity: 0.9;
-            margin-top: 2px;
         }
 
         .closing-text {
-            font-size: 0.75rem;
-            line-height: 1.5;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin: 35px 0 20px 0;
             opacity: 0.95;
         }
 
         .closing-signature {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 1px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -531,6 +429,7 @@
             <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
         </div>
 
+        <!-- AREA BAWAH COVER -->
         <div class="cover-bottom-group">
             <div class="guest-section">
                 <p class="guest-label">Kepada Yth, Bapak, Ibu, Saudara/i :</p>
@@ -545,132 +444,86 @@
     <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- HALAMAN SLIDE UNDANGAN UTAMA -->
-    <div class="slide-container" id="slideContainer">
-        
-        <!-- SLIDE 1: AYAT SUCI -->
-        <section class="slide-section" id="slide1">
-            <div class="card-box" data-aos="zoom-in" data-aos-duration="1000">
-                <div>
-                    <div class="initial-badge">R & S</div>
-                    <p class="quote-box">
-                        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-                        <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
-                    </p>
-                </div>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
+    <!-- HALAMAN DETAIL ACARA UTAMA -->
+    <div class="main-content">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            
+            <div class="initial-badge" data-aos="fade-down">R & S</div>
+            
+            <p class="quote-box" data-aos="fade-up">
+                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                <span class="quote-surah">- QS. Ar-Rum : 21 -</span>
+            </p>
+
+            <div class="section-divider"></div>
+
+            <h2 class="getting-married-title" data-aos="fade-up">We Are Getting Married</h2>
+            
+            <p class="wedding-opening-text" data-aos="fade-up">
+                Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
+            </p>
+
+            <div class="couple-group" data-aos="fade-up">
+                <div class="couple-name-nickname">Rizal</div>
+                <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
+                <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
             </div>
-        </section>
 
-        <!-- SLIDE 2: MEMPELAI -->
-        <section class="slide-section" id="slide2">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
-                <div>
-                    <h2 class="getting-married-title">We Are Getting Married</h2>
-                    <p class="wedding-opening-text">
-                        Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
-                    </p>
+            <div class="ampersand" data-aos="zoom-in">&</div>
 
-                    <div class="couple-group">
-                        <div class="couple-name-nickname">Rizal</div>
-                        <div class="couple-fullname">Mohamad Rizal Prasetyo</div>
-                        <div class="parents-info">Putra pertama dari Bapak Wano Handoyo & Ibu Karmini</div>
-                    </div>
-
-                    <div class="ampersand">&</div>
-
-                    <div class="couple-group">
-                        <div class="couple-name-nickname">Selvi</div>
-                        <div class="couple-fullname">Nunik Selviana</div>
-                        <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
-                    </div>
-                </div>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
+            <div class="couple-group" data-aos="fade-up">
+                <div class="couple-name-nickname">Selvi</div>
+                <div class="couple-fullname">Nunik Selviana</div>
+                <div class="parents-info">Putri pertama dari Bapak Rasmanto & Ibu Siti Aliyah</div>
             </div>
-        </section>
 
-        <!-- SLIDE 3: ACARA & COUNTDOWN -->
-        <section class="slide-section" id="slide3">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
-                <div class="event-info">
-                    <h3>Acara Tasyakuran Pernikahan</h3>
-                    <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
-                    <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
-                </div>
-
-                <div>
-                    <p style="font-size: 0.65rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 6px;">MENUJU HARI BAHAGIA</p>
-                    <div class="countdown">
-                        <div class="time-box"><span id="days">00</span><label>HARI</label></div>
-                        <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
-                        <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
-                        <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
-                    </div>
-                </div>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
+            <div class="event-info" data-aos="fade-up">
+                <h3>Acara Tasyakuran Pernikahan</h3>
+                <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
+                <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
             </div>
-        </section>
 
-        <!-- SLIDE 4: LOVE GIFT -->
-        <section class="slide-section" id="slide4">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000">
-                <div>
-                    <h3 class="gift-title">Love Gift</h3>
-                    <p class="gift-text">
-                        Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
-                    </p>
-                    <div class="bank-card">
-                        <div class="bank-name">BCA</div>
-                        <div class="account-number">3571153368</div>
-                        <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
-                    </div>
-                </div>
-                <div class="scroll-hint">↓ Geser ke bawah</div>
+            <!-- COUNTDOWN -->
+            <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
+            <div class="countdown">
+                <div class="time-box"><span id="days">00</span><label>HARI</label></div>
+                <div class="time-box"><span id="hours">00</span><label>JAM</label></div>
+                <div class="time-box"><span id="minutes">00</span><label>MENIT</label></div>
+                <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
             </div>
-        </section>
 
-        <!-- SLIDE 5: WISHES (UCAPAN & DOA) -->
-        <section class="slide-section" id="slide5">
-            <div class="card-box" data-aos="fade-up" data-aos-duration="1000" style="justify-content: flex-start;">
-                <div>
-                    <h3 class="wishes-title">Wishes</h3>
-                    <p class="wishes-subtitle">Ucapan Selamat & Doa</p>
-                </div>
-
-                <div class="wishes-form">
-                    <input type="text" id="senderName" placeholder="Nama Anda...">
-                    <textarea id="senderMessage" placeholder="Tulis ucapan & doa restu..."></textarea>
-                    <button class="btn-send-wish" onclick="submitWish()">Kirimkan Ucapan</button>
-                </div>
-
-                <div class="wishes-container" id="wishesList">
-                    <div class="wish-item">
-                        <div class="wish-name">Budi Santoso</div>
-                        <div class="wish-text">Barakallah, semoga menjadi keluarga sakinah, mawaddah, warahmah!</div>
-                    </div>
-                    <div class="wish-item">
-                        <div class="wish-name">Siti Aminah</div>
-                        <div class="wish-text">Selamat berbahagia Rizal & Selvi! Lancar sampai hari H.</div>
-                    </div>
+            <!-- LOVE GIFT -->
+            <div class="gift-section" data-aos="fade-up">
+                <h3 class="gift-title">Love Gift</h3>
+                <p class="gift-text">
+                    Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih untuk kami, dapat melalui:
+                </p>
+                <div class="bank-card">
+                    <div class="bank-name">BCA</div>
+                    <div class="account-number">3571153368</div>
+                    <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
                 </div>
             </div>
-        </section>
 
+            <!-- CLOSING -->
+            <div class="closing-text" data-aos="fade-up">
+                <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
+                <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Kami yang berbahagia,</p>
+                <div class="closing-signature">Rizal & Selvi</div>
+            </div>
+
+        </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ 
-            once: false,
-            mirror: true
-        });
+        AOS.init({ once: true });
 
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to');
         if (guestName) {
             document.getElementById('guestName').innerText = guestName;
-            document.getElementById('senderName').value = guestName; // Otomatis isi nama dari parameter URL
         }
 
         const bgMusic = document.getElementById('bgMusic');
@@ -680,11 +533,6 @@
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('open');
             playAudioWithFadeIn();
-            document.getElementById('slide1').scrollIntoView();
-
-            setTimeout(() => {
-                AOS.refresh();
-            }, 400);
         }
 
         function playAudioWithFadeIn() {
@@ -738,39 +586,6 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        // Fungsi Kirim Ucapan
-        function submitWish() {
-            const nameInput = document.getElementById('senderName');
-            const msgInput = document.getElementById('senderMessage');
-            const listContainer = document.getElementById('wishesList');
-
-            if (nameInput.value.trim() === '' || msgInput.value.trim() === '') {
-                alert('Mohon isi nama dan pesan ucapan terlebih dahulu.');
-                return;
-            }
-
-            const newItem = document.createElement('div');
-            newItem.className = 'wish-item';
-            newItem.innerHTML = `
-                <div class="wish-name">${escapeHtml(nameInput.value)}</div>
-                <div class="wish-text">${escapeHtml(msgInput.value)}</div>
-            `;
-
-            listContainer.prepend(newItem);
-            msgInput.value = '';
-        }
-
-        function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
-        }
     </script>
 </body>
 </html>
