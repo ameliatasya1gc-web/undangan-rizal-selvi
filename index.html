@@ -91,7 +91,6 @@
             opacity: 0.9;
         }
 
-        /* GAMBAR NAMA PNG */
         .name-image-cover {
             width: 260px !important;
             max-width: 75% !important;
@@ -101,7 +100,6 @@
             filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.7));
         }
 
-        /* GRUP BAGIAN BAWAH COVER (TAMU + TOMBOL BUKA UNDANGAN) */
         .cover-bottom-group {
             width: 100%;
             max-width: 300px;
@@ -111,7 +109,6 @@
             margin-bottom: 10px;
         }
 
-        /* TAMU UNDANGAN (DIPERKECIL SIKIT) */
         .guest-section {
             width: 100%;
             display: flex;
@@ -167,7 +164,6 @@
             color: #0b1a30;
         }
 
-        /* TOMBOL MUSIK FLOATING */
         .music-control {
             position: fixed;
             bottom: 25px;
@@ -198,7 +194,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* MAIN CONTENT */
         .main-content {
             width: 100%;
             max-width: 450px;
@@ -322,6 +317,26 @@
             margin-bottom: 10px;
         }
 
+        /* TOMBOL GOOGLE MAPS */
+        .btn-map {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 18px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 20px;
+            background: rgba(11, 26, 48, 0.8);
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-map:hover {
+            background: var(--accent-gold);
+            color: #0b1a30;
+        }
+
         .countdown {
             display: flex;
             justify-content: space-around;
@@ -398,6 +413,24 @@
             opacity: 0.85;
         }
 
+        /* TOMBOL SALIN REKENING */
+        .btn-copy {
+            margin-top: 10px;
+            padding: 6px 16px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--accent-gold);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-gold);
+            color: #0b1a30;
+        }
+
         .closing-text {
             font-size: 0.85rem;
             line-height: 1.7;
@@ -413,23 +446,42 @@
             letter-spacing: 1px;
             margin-top: 10px;
         }
+
+        /* TOAST NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(212, 175, 55, 0.95);
+            color: #0b1a30;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 10000;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
-    <!-- ELEMEN AUDIO -->
     <audio id="bgMusic" loop preload="auto">
         <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- HALAMAN COVER UTAMA -->
     <div class="cover-screen" id="coverScreen">
         <div class="cover-header-group">
             <p class="cover-title">THE WEDDING OF</p>
             <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
         </div>
 
-        <!-- AREA BAWAH COVER -->
         <div class="cover-bottom-group">
             <div class="guest-section">
                 <p class="guest-label">Kepada Yth, Bapak, Ibu, Saudara/i :</p>
@@ -441,10 +493,8 @@
         </div>
     </div>
 
-    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" onclick="toggleMusic()">🎵</div>
 
-    <!-- HALAMAN DETAIL ACARA UTAMA -->
     <div class="main-content">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             
@@ -481,9 +531,9 @@
                 <h3>Acara Tasyakuran Pernikahan</h3>
                 <p><strong>Hari / Tanggal:</strong><br>Sabtu, 12 September 2026 – Minggu, 13 September 2026</p>
                 <p><strong>Lokasi:</strong><br>Dusun Sengon, Desa Tanjunganom, RT 03/RW 02, Kec. Rakit, Kab. Banjarnegara</p>
+                <a href="https://maps.google.com/?q=Tanjunganom+Rakit+Banjarnegara" target="_blank" class="btn-map">📍 Buka Google Maps</a>
             </div>
 
-            <!-- COUNTDOWN -->
             <p style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 10px;">MENUJU HARI BAHAGIA</p>
             <div class="countdown">
                 <div class="time-box"><span id="days">00</span><label>HARI</label></div>
@@ -492,7 +542,6 @@
                 <div class="time-box"><span id="seconds">00</span><label>DETIK</label></div>
             </div>
 
-            <!-- LOVE GIFT -->
             <div class="gift-section" data-aos="fade-up">
                 <h3 class="gift-title">Love Gift</h3>
                 <p class="gift-text">
@@ -500,12 +549,12 @@
                 </p>
                 <div class="bank-card">
                     <div class="bank-name">BCA</div>
-                    <div class="account-number">3571153368</div>
+                    <div class="account-number" id="accountNo">3571153368</div>
                     <div class="account-name">a.n. Mohamad Rizal Prasetyo</div>
+                    <button class="btn-copy" onclick="copyAccount()">📋 Salin Rekening</button>
                 </div>
             </div>
 
-            <!-- CLOSING -->
             <div class="closing-text" data-aos="fade-up">
                 <p>Suatu kebahagiaan & kehormatan bagi kami, apabila memberikan do'a restu kepada kami.</p>
                 <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.8;">Kami yang berbahagia,</p>
@@ -515,7 +564,8 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <div class="toast" id="toast">Nomor rekening berhasil disalin!</div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true });
@@ -581,7 +631,27 @@
                 document.getElementById("hours").innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
                 document.getElementById("minutes").innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
                 document.getElementById("seconds").innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+            } else {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
             }
+        }
+
+        function copyAccount() {
+            const accNum = document.getElementById("accountNo").innerText;
+            navigator.clipboard.writeText(accNum).then(() => {
+                showToast();
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2000);
         }
 
         updateCountdown();
