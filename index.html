@@ -91,22 +91,6 @@
             display: block;
         }
 
-        .cover-subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 5px;
-            opacity: 0.8;
-        }
-
-        .cover-date {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 15px;
-            color: #d0d0d0;
-        }
-
         .btn-open {
             border: 1.5px solid var(--accent-gold);
             background: rgba(11, 26, 48, 0.75);
@@ -375,7 +359,7 @@
 </head>
 <body>
 
-    <!-- ELEMEN AUDIO (Ganti 'musik.mp3' jika nama file musik Anda berbeda) -->
+    <!-- ELEMEN AUDIO -->
     <audio id="bgMusic" loop preload="auto">
         <source src="musik.mp3" type="audio/mpeg">
     </audio>
@@ -385,8 +369,6 @@
         <div class="cover-header-group">
             <p class="cover-title">THE WEDDING OF</p>
             <img src="nama-teks.png" alt="Rizal & Selvi" class="name-image-cover">
-            <p class="cover-subtitle">ACARA TASYAKURAN PERNIKAHAN</p>
-            <p class="cover-date">JUM'AT, 11 SEPTEMBER 2026</p>
         </div>
         <button class="btn-open" onclick="openInvitation()">✉ Buka Undangan</button>
     </div>
@@ -474,7 +456,6 @@
         const musicControl = document.querySelector('.music-control');
         let isPlaying = false;
 
-        // FUNGSI MEMBUKA UNDANGAN
         function openInvitation() {
             document.getElementById('coverScreen').classList.add('open');
             playAudioWithFadeIn();
